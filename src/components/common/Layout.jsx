@@ -7,7 +7,7 @@ import { ScrollProgress, ScrollToTop } from '../ui/scroll-progress';
 import { useSmoothScroll } from '../../hooks/useScrollEffects';
 import { CtaButton } from '../ui/cta-button';
 import OpeningOrchestrator from '../ui/opening-orchestrator';
-import AntiGravityCanvas from '../ui/anti-gravity-canvas';
+import { AntiGravityCanvas } from '../ui/anti-gravity-canvas';
 
 const Layout = ({ children, stars = {} }) => {
   const location = useLocation();
