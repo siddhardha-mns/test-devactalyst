@@ -3,7 +3,6 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Code, Users, Rocket, Sparkles, ArrowRight } from 'lucide-react';
 import Layout from '../../../components/common/Layout';
-import { DevCatalystHeroScroll } from '../components/DevCatalystHeroScroll';
 import { StarsCanvas } from '../../../components/ui/stars-canvas';
 import { GradientButton } from '../../../components/ui/gradient-button';
 import { GradientText } from '../../../components/ui/animated-hero';
@@ -221,12 +220,12 @@ const Home = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.6, ease: 'easeOut' }}
               >
-                <Link to="/workshops" className="group">
+                <a href="https://beacons.ai/devcatalyst" target="_blank" rel="noopener noreferrer" className="group">
                   <CtaButton size="lg" variant="primary">
-                    <span className="pr-2">Get Started</span>
+                    <span className="pr-2">Join Us</span>
                     <ArrowRight className="w-5 h-5" aria-hidden="true" />
                   </CtaButton>
-                </Link>
+                </a>
                 <Link to="/about">
                   <GradientButton variant="default">Learn More</GradientButton>
                 </Link>
@@ -256,8 +255,97 @@ const Home = () => {
             </motion.div>
           </section>
 
-          {/* Hero Scroll Demo Section */}
-          <DevCatalystHeroScroll />
+          {/* Main Description Section (Replacing Tablet Animation) */}
+          <section className="relative py-20 px-6 max-w-4xl mx-auto text-slate-300 text-lg md:text-xl leading-relaxed space-y-8">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                <GradientText>Where Student Innovators Build the Future</GradientText>
+              </h2>
+              <p>
+                Welcome to DevCatalyst, the premier student-led community for India's next generation of tech talent. We are the launchpad for aspiring developers, creators, and entrepreneurs ready to make their mark on the industry.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-2xl font-bold text-cyan-300 mt-12 mb-4 flex items-center gap-2">
+                <Sparkles className="w-6 h-6" /> Our Mission: To Transform Passion into Profession.
+              </h3>
+              <p>
+                We exist to bridge the gap between academic theory and industry reality. We empower students with the practical, in-demand skills and the powerful professional network needed to not just enter the tech world, but to lead it.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="mt-12"
+            >
+              <h3 className="text-2xl font-bold text-white mb-6">Your Catalyst for Growth:</h3>
+              <ul className="space-y-6 text-slate-300">
+                <li className="flex gap-4">
+                  <div className="text-cyan-400 mt-1"><Code className="w-6 h-6" /></div>
+                  <div>
+                    <strong className="text-white">Master In-Demand Skills:</strong> Go beyond the textbook with immersive workshops and competitive challenges designed to make you industry-ready from day one.
+                  </div>
+                </li>
+                <li className="flex gap-4">
+                  <div className="text-cyan-400 mt-1"><Users className="w-6 h-6" /></div>
+                  <div>
+                    <strong className="text-white">Gain an Insider's Edge:</strong> Access exclusive talks and direct mentorship from leaders at top tech companies, giving you invaluable guidance for your career.
+                  </div>
+                </li>
+                <li className="flex gap-4">
+                  <div className="text-cyan-400 mt-1"><Rocket className="w-6 h-6" /></div>
+                  <div>
+                    <strong className="text-white">Transform Ideas into Impact:</strong> Our project showcases and ideation hubs are your sandbox for innovation. Collaborate, build an impressive portfolio, and create solutions that matter.
+                  </div>
+                </li>
+                <li className="flex gap-4">
+                  <div className="text-cyan-400 mt-1"><Sparkles className="w-6 h-6" /></div>
+                  <div>
+                    <strong className="text-white">Unlock Your Dream Career:</strong> Tap into our curated network for exclusive internship and job opportunities. We connect you directly with the companies shaping the future.
+                  </div>
+                </li>
+              </ul>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="border-t border-slate-800 pt-10 mt-12"
+            >
+              <p className="mb-6 font-medium text-white text-xl">
+                DevCatalyst is more than a community; it’s a commitment to your success. Whether you're writing your first line of code or planning your first startup, you belong here.
+              </p>
+              <p className="mb-8">Ready to accelerate your journey?</p>
+              <div className="flex flex-col sm:flex-row items-center gap-6">
+                <a href="https://beacons.ai/devcatalyst" target="_blank" rel="noopener noreferrer">
+                  <CtaButton size="lg" variant="primary">
+                    <span className="pr-2">Join Us Today</span>
+                    <ArrowRight className="w-5 h-5" aria-hidden="true" />
+                  </CtaButton>
+                </a>
+                <div className="text-sm text-slate-400">
+                  Connect with us:<br/>
+                  <a href="mailto:devcatalyst.2025@gmail.com" className="text-cyan-400 hover:text-cyan-300 transition-colors">devcatalyst.2025@gmail.com</a>
+                </div>
+              </div>
+            </motion.div>
+          </section>
 
           {/* Features Preview */}
           <section className="relative py-20 px-6">
