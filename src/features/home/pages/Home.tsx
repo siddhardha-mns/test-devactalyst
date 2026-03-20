@@ -226,8 +226,8 @@ const Home = () => {
                     <ArrowRight className="w-5 h-5" aria-hidden="true" />
                   </CtaButton>
                 </a>
-                <Link to="/about">
-                  <GradientButton variant="default">Learn More</GradientButton>
+                <Link to="/contact">
+                  <GradientButton variant="default">Contact Us</GradientButton>
                 </Link>
               </motion.div>
             </motion.div>
@@ -392,17 +392,7 @@ const Home = () => {
                 ))}
               </div>
 
-              <motion.div
-                className="text-center mt-12"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                viewport={{ once: true }}
-              >
-                <Link to="/about">
-                  <GradientButton variant="default">Explore All Features</GradientButton>
-                </Link>
-              </motion.div>
+
             </div>
           </section>
         </div>
