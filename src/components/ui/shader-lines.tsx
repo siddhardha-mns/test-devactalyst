@@ -2,21 +2,46 @@
 
 import { useEffect, useRef } from "react"
 
+interface ThreeRenderer {
+  setPixelRatio: (_r: number) => void;
+  setSize: (_w: number, _h: number) => void;
+  domElement: HTMLCanvasElement;
+  render: (_scene: object, _camera: object) => void;
+  dispose: () => void;
+}
+
+interface ThreeUniforms {
+  time: { type: string; value: number };
+  resolution: { type: string; value: { x: number; y: number } };
+}
+
+interface SceneRefs {
+  camera: object | null;
+  scene: object | null;
+  renderer: ThreeRenderer | null;
+  uniforms: ThreeUniforms | null;
+  animationId: number | null;
+}
+
+interface ThreeInstance {
+  Camera: new () => { position: { z: number } };
+  Scene: new () => object;
+  PlaneBufferGeometry: new (_w: number, _h: number) => object;
+  Vector2: new () => { x: number; y: number };
+  ShaderMaterial: new (_opts: object) => object;
+  Mesh: new (_geo: object, _mat: object) => { add?: never };
+  WebGLRenderer: new () => ThreeRenderer;
+}
+
 declare global {
   interface Window {
-    THREE: any
+    THREE: ThreeInstance | undefined;
   }
 }
 
 export function ShaderAnimation() {
   const containerRef = useRef<HTMLDivElement>(null)
-  const sceneRef = useRef<{
-    camera: any
-    scene: any
-    renderer: any
-    uniforms: any
-    animationId: number | null
-  }>({
+  const sceneRef = useRef<SceneRefs>({
     camera: null,
     scene: null,
     renderer: null,
@@ -36,7 +61,6 @@ export function ShaderAnimation() {
     document.head.appendChild(script)
 
     return () => {
-      // Cleanup
       if (sceneRef.current.animationId) {
         cancelAnimationFrame(sceneRef.current.animationId)
       }
@@ -53,33 +77,25 @@ export function ShaderAnimation() {
     const THREE = window.THREE
     const container = containerRef.current
 
-    // Clear any existing content
     container.innerHTML = ""
 
-    // Initialize camera
     const camera = new THREE.Camera()
     camera.position.z = 1
 
-    // Initialize scene
     const scene = new THREE.Scene()
-
-    // Create geometry
     const geometry = new THREE.PlaneBufferGeometry(2, 2)
 
-    // Define uniforms
-    const uniforms = {
+    const uniforms: ThreeUniforms = {
       time: { type: "f", value: 1.0 },
       resolution: { type: "v2", value: new THREE.Vector2() },
     }
 
-    // Vertex shader
     const vertexShader = `
       void main() {
         gl_Position = vec4( position, 1.0 );
       }
     `
 
-    // Fragment shader
     const fragmentShader = `
       #define TWO_PI 6.2831853072
       #define PI 3.14159265359
@@ -121,32 +137,22 @@ export function ShaderAnimation() {
       }
     `
 
-    // Create material
     const material = new THREE.ShaderMaterial({
-      uniforms: uniforms,
-      vertexShader: vertexShader,
-      fragmentShader: fragmentShader,
+      uniforms,
+      vertexShader,
+      fragmentShader,
     })
 
-    // Create mesh and add to scene
     const mesh = new THREE.Mesh(geometry, material)
+    // @ts-expect-error THREE.Scene.add exists at runtime via CDN
     scene.add(mesh)
 
-    // Initialize renderer
     const renderer = new THREE.WebGLRenderer()
     renderer.setPixelRatio(window.devicePixelRatio)
     container.appendChild(renderer.domElement)
 
-    // Store references
-    sceneRef.current = {
-      camera,
-      scene,
-      renderer,
-      uniforms,
-      animationId: null,
-    }
+    sceneRef.current = { camera, scene, renderer, uniforms, animationId: null }
 
-    // Handle resize
     const onWindowResize = () => {
       const rect = container.getBoundingClientRect()
       renderer.setSize(rect.width, rect.height)
@@ -157,7 +163,6 @@ export function ShaderAnimation() {
     onWindowResize()
     window.addEventListener("resize", onWindowResize, false)
 
-    // Animation loop
     const animate = () => {
       sceneRef.current.animationId = requestAnimationFrame(animate)
       uniforms.time.value += 0.05
@@ -170,7 +175,7 @@ export function ShaderAnimation() {
   return (
     <div
       ref={containerRef}
-      className="w-full h-full absolute" 
+      className="w-full h-full absolute"
     />
   )
 }

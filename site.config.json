@@ -1,0 +1,16 @@
+{
+  "siteName": "DevCatalyst",
+  "defaultTitle": "DevCatalyst - Build. Learn. Grow.",
+  "titleSeparator": " | ",
+  "defaultDescription": "Join DevCatalyst where curious minds become industry-ready developers through hands-on projects, mentorship, and real-world experience.",
+  "twitterCard": "summary_large_image",
+  "routes": [
+    "/",
+    "/projects",
+    "/workshops",
+    "/gallery",
+    "/team",
+    "/contact",
+    "/components"
+  ]
+}
