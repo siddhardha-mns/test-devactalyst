@@ -8,20 +8,20 @@ import {
   Star,
   ChevronRight,
   Code,
-  Database,
-  Smartphone,
   Brain,
   Target,
   Rocket,
   Zap,
-  BarChart3,
-  Settings,
+  Trophy,
+  Globe,
+  Cloud,
+  Shield,
+  Lightbulb,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Layout from '../components/common/Layout';
 import { GradientButton } from '../components/ui/gradient-button';
 import { CtaButton } from '@/components/ui/cta-button';
-
 import { Helmet } from 'react-helmet-async';
 
 const Workshops = () => {
@@ -29,103 +29,139 @@ const Workshops = () => {
   const [hoveredWorkshop, setHoveredWorkshop] = useState(null);
 
   const categories = [
-    { id: 'all', name: 'All Workshops', icon: <Star className="w-5 h-5" /> },
-    { id: 'web', name: 'Web Development', icon: <Code className="w-5 h-5" /> },
-    { id: 'mobile', name: 'Mobile Apps', icon: <Smartphone className="w-5 h-5" /> },
-    { id: 'data', name: 'Data Science', icon: <Database className="w-5 h-5" /> },
+    { id: 'all', name: 'All Events', icon: <Star className="w-5 h-5" /> },
     { id: 'ai', name: 'AI/ML', icon: <Brain className="w-5 h-5" /> },
+    { id: 'web3', name: 'Web3', icon: <Globe className="w-5 h-5" /> },
+    { id: 'hackathon', name: 'Hackathons', icon: <Trophy className="w-5 h-5" /> },
+    { id: 'cloud', name: 'Cloud', icon: <Cloud className="w-5 h-5" /> },
   ];
 
   const workshops = [
     {
       id: 1,
-      title: 'React Masterclass: Building Modern UIs',
-      category: 'web',
+      title: 'Agentic AI Workshop',
+      category: 'ai',
       level: 'Intermediate',
-      duration: '3 hours',
-      participants: 24,
-      date: 'Nov 25, 2024',
-      time: '2:00 PM - 5:00 PM',
-      instructor: 'Sarah Chen',
+      duration: '1 day',
+      participants: 50,
+      date: 'Sep 24, 2024',
+      time: 'Full Day Session',
+      instructor: 'Vijender P',
+      venue: 'Matrusri Engineering College',
       description:
-        'Deep dive into React hooks, context, and modern patterns for building scalable applications.',
-      tags: ['React', 'JavaScript', 'Frontend'],
-      icon: Rocket,
+        'An immersive session exploring how AI agents act autonomously to solve complex problems. Participants built a fully functional PDF document assistant using FastAPI, Google Gemini AI, Pinecone vector database, MySQL, and Streamlit.',
+      tags: ['Agentic AI', 'RAG', 'FastAPI', 'Gemini AI', 'Pinecone', 'Vector Embeddings'],
+      icon: Brain,
+      highlight: 'Hands-on build: PDF Document Assistant',
+      status: 'completed',
     },
     {
       id: 2,
-      title: 'Full-Stack App with Node.js & PostgreSQL',
-      category: 'web',
-      level: 'Advanced',
-      duration: '4 hours',
-      participants: 18,
-      date: 'Nov 28, 2024',
-      time: '10:00 AM - 2:00 PM',
-      instructor: 'Mike Rodriguez',
+      title: 'Algorand Builders Workshop – Hyderabad Edition',
+      category: 'web3',
+      level: 'Beginner',
+      duration: '1 day',
+      participants: 75,
+      date: 'Aug 22, 2024',
+      time: 'Full Day Session',
+      instructor: 'Srujan Vuyyuru (Rise In)',
+      venue: 'KV Seminar Hall, Matrusri Engineering College',
       description:
-        'Build a complete REST API with authentication, database design, and deployment strategies.',
-      tags: ['Node.js', 'PostgreSQL', 'API Design'],
+        'A hands-on blockchain development workshop in partnership with Rise In and Algorand Foundation. Covered the evolution from Web1 to Web3, transparency, immutability, and smart contracts — participants built their very first smart contract.',
+      tags: ['Web3', 'Algorand', 'Smart Contracts', 'Blockchain', 'Python', 'TypeScript'],
       icon: Zap,
+      highlight: 'Build your first smart contract on Algorand',
+      status: 'completed',
     },
     {
       id: 3,
-      title: 'Flutter Mobile Development Bootcamp',
-      category: 'mobile',
+      title: 'Git Basics & Dify AI Workflow',
+      category: 'ai',
       level: 'Beginner',
-      duration: '5 hours',
-      participants: 30,
-      date: 'Dec 2, 2024',
-      time: '9:00 AM - 2:00 PM',
-      instructor: 'Alex Kim',
+      duration: '2 hours',
+      participants: 60,
+      date: 'Aug 18, 2024',
+      time: 'Inauguration Day Session',
+      instructor: 'Nikhil Sai Siddhardha Madagala',
+      venue: 'Matrusri Engineering College',
       description:
-        'Create beautiful cross-platform mobile apps with Flutter and Dart programming language.',
-      tags: ['Flutter', 'Dart', 'Mobile'],
-      icon: Smartphone,
+        'Conducted at the official inauguration of DevCatalyst, this session introduced students to essential Git commands and collaboration workflows, followed by a walkthrough on building custom AI chatbots using the Dify AI platform.',
+      tags: ['Git', 'Version Control', 'Dify AI', 'Chatbots', 'Collaboration'],
+      icon: Code,
+      highlight: 'DevCatalyst Club Inauguration Session',
+      status: 'completed',
     },
     {
       id: 4,
-      title: 'Machine Learning with Python',
-      category: 'ai',
-      level: 'Intermediate',
-      duration: '6 hours',
-      participants: 20,
-      date: 'Dec 5, 2024',
-      time: '10:00 AM - 4:00 PM',
-      instructor: 'Dr. Lisa Wang',
+      title: 'SIH Internal Hackathon',
+      category: 'hackathon',
+      level: 'Advanced',
+      duration: '1 day',
+      participants: 300,
+      date: 'Sep 25, 2024',
+      time: 'Full Day Event',
+      instructor: 'Mrs. Samatha (SPOC for SIH)',
+      venue: 'Matrusri Engineering College',
       description:
-        'Hands-on introduction to ML algorithms, data preprocessing, and model deployment.',
-      tags: ['Python', 'Scikit-learn', 'TensorFlow'],
-      icon: Brain,
+        'DevCatalyst organized the Smart India Hackathon internal round, managing 100+ teams across 9 evaluation panels. Each panel had 2 student coordinators, 1 faculty coordinator, and 2 jury members. Top 50 teams advanced to the SIH finale.',
+      tags: ['SIH', 'Hackathon', 'Innovation', 'Problem Solving', 'Teamwork'],
+      icon: Trophy,
+      highlight: '100+ teams · 9 panels · Top 50 advance to finale',
+      status: 'completed',
     },
     {
       id: 5,
-      title: 'Data Analysis with SQL & Python',
-      category: 'data',
-      level: 'Beginner',
-      duration: '4 hours',
-      participants: 25,
-      date: 'Dec 8, 2024',
-      time: '1:00 PM - 5:00 PM',
-      instructor: 'John Martinez',
+      title: 'Youth Speak Ideathon',
+      category: 'hackathon',
+      level: 'Intermediate',
+      duration: '1 day + 24hr finale',
+      participants: 80,
+      date: 'Sep 23, 2024',
+      time: 'Full Day Event',
+      instructor: 'AIESEC in India',
+      venue: 'Matrusri Engineering College → IIT Hyderabad (Finale)',
       description:
-        'Learn to extract insights from data using SQL queries and Python data analysis libraries.',
-      tags: ['SQL', 'Pandas', 'Data Visualization'],
-      icon: BarChart3,
+        'An AIESEC initiative for young innovators to design solutions addressing the UN Sustainable Development Goals. DevCatalyst organized the first round, with the top 10 teams advancing to a 24-hour hackathon finale at IIT Hyderabad.',
+      tags: ['SDGs', 'AIESEC', 'Innovation', 'Social Impact', 'IIT Hyderabad'],
+      icon: Lightbulb,
+      highlight: 'Top 10 teams → 24hr finale at IIT Hyderabad',
+      status: 'completed',
     },
     {
       id: 6,
-      title: 'DevOps Fundamentals: Docker & CI/CD',
-      category: 'web',
-      level: 'Advanced',
-      duration: '3.5 hours',
-      participants: 15,
-      date: 'Dec 12, 2024',
-      time: '3:00 PM - 6:30 PM',
-      instructor: 'Emma Thompson',
+      title: 'AWS 101: Intro to Cloud',
+      category: 'cloud',
+      level: 'Beginner',
+      duration: '3 hours',
+      participants: 100,
+      date: 'Dec 13, 2025',
+      time: '10:00 AM – 1:00 PM',
+      instructor: 'Rudramadhaba Mishra (Cloud Engineer, AWS)',
+      venue: 'KVR Seminar Hall, Matrusri Engineering College',
       description:
-        'Master containerization and continuous deployment for modern development workflows.',
-      tags: ['Docker', 'GitHub Actions', 'AWS'],
-      icon: Settings,
+        'The inaugural session of AWS Cloud Club MECS, designed for beginners to understand what cloud computing really is — beyond the buzzwords. Covered core AWS services, real-world cloud applications, and hands-on fundamentals led by a practicing AWS Cloud Engineer.',
+      tags: ['AWS', 'Cloud Computing', 'Beginner', 'DevOps', 'AWS Cloud Club'],
+      icon: Cloud,
+      highlight: '100+ participants · AWS Cloud Club inaugural event',
+      status: 'completed',
+    },
+    {
+      id: 7,
+      title: 'AWS IAM: Hands-on Security Session',
+      category: 'cloud',
+      level: 'Intermediate',
+      duration: 'Half Day',
+      participants: 20,
+      date: 'Mar 2026',
+      time: 'Hands-on Session',
+      instructor: 'Aric Pandya',
+      venue: 'Matrusri Engineering College',
+      description:
+        'A practical deep-dive into AWS Identity and Access Management — the foundation of cloud security. Participants learned to control access, secure identities, and configure permissions correctly. No theory-only slides; every concept was executed live.',
+      tags: ['AWS', 'IAM', 'Cloud Security', 'Access Control', 'AWS Cloud Club'],
+      icon: Shield,
+      highlight: 'Execute, don\'t just listen — full hands-on',
+      status: 'completed',
     },
   ];
 
@@ -150,9 +186,13 @@ const Workshops = () => {
   return (
     <Layout>
       <Helmet>
-        <title>DevCatalyst | Workshops</title>
-        <meta name="description" content="Interactive workshops across web, mobile, data, and AI—learn by building with DevCatalyst." />
+        <title>DevCatalyst | Workshops & Events</title>
+        <meta
+          name="description"
+          content="Real workshops and events by DevCatalyst — from Agentic AI and Web3 to hackathons and community meetups at Matrusri Engineering College, Hyderabad."
+        />
       </Helmet>
+
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-6 pt-20">
         <motion.div
@@ -179,8 +219,8 @@ const Workshops = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 1 }}
           >
-            Interactive Workshops
-            <span className="block mt-2 text-cyan-300">That Transform Skills</span>
+            Workshops & Events
+            <span className="block mt-2 text-cyan-300">Built by DevCatalyst</span>
           </motion.h1>
 
           <motion.p
@@ -189,8 +229,8 @@ const Workshops = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 1 }}
           >
-            Dive into practical, instructor-led sessions and build real projects to accelerate your
-            growth.
+            From AI agents and blockchain to hackathons and community meetups — every event we run
+            is hands-on, impact-driven, and open to all builders.
           </motion.p>
 
           {/* Quick Stats */}
@@ -201,9 +241,9 @@ const Workshops = () => {
             transition={{ delay: 0.8, duration: 0.6 }}
           >
             {[
-              { number: '25+', label: 'Workshops' },
-              { number: '500+', label: 'Students Trained' },
-              { number: '4.8★', label: 'Average Rating' },
+              { number: '8+', label: 'Events Hosted' },
+              { number: '500+', label: 'Students Reached' },
+              { number: '4', label: 'Global Partners' },
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -244,11 +284,10 @@ const Workshops = () => {
             {categories.map((category) => (
               <motion.button
                 key={category.id}
-                className={`flex items-center space-x-2 px-5 py-2.5 rounded-full font-medium transition-all duration-200 border ${
-                  selectedCategory === category.id
+                className={`flex items-center space-x-2 px-5 py-2.5 rounded-full font-medium transition-all duration-200 border ${selectedCategory === category.id
                     ? 'bg-cyan-500/15 text-cyan-200 border-cyan-500/40'
                     : 'bg-white/5 text-slate-200 hover:bg-white/10 border-slate-800'
-                }`}
+                  }`}
                 onClick={() => setSelectedCategory(category.id)}
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
@@ -273,7 +312,7 @@ const Workshops = () => {
               {filteredWorkshops.map((workshop, index) => (
                 <motion.div
                   key={workshop.id}
-                  className={`group relative dc-card overflow-hidden transition-all duration-300 cursor-pointer scale-[0.9] md:scale-100`}
+                  className="group relative dc-card overflow-hidden transition-all duration-300 cursor-pointer scale-[0.9] md:scale-100 flex flex-col"
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.06 }}
@@ -282,9 +321,7 @@ const Workshops = () => {
                   onHoverEnd={() => setHoveredWorkshop(null)}
                 >
                   {/* Workshop Header */}
-                  <div
-                    className={`h-28 bg-gradient-to-r from-slate-900 to-slate-800 relative flex items-center justify-center`}
-                  >
+                  <div className="h-28 bg-gradient-to-r from-slate-900 to-slate-800 relative flex items-center justify-center">
                     <motion.div
                       className="flex items-center justify-center"
                       animate={hoveredWorkshop === workshop.id ? { scale: 1.08 } : {}}
@@ -295,10 +332,14 @@ const Workshops = () => {
                         return <Icon className="w-10 h-10 text-cyan-300" />;
                       })()}
                     </motion.div>
+                    {/* Completed badge */}
+                    <div className="absolute top-3 right-3 px-2 py-0.5 bg-cyan-500/20 border border-cyan-500/30 rounded-full text-cyan-300 text-xs font-medium">
+                      Completed
+                    </div>
                   </div>
 
                   {/* Workshop Content */}
-                  <div className="p-6">
+                  <div className="p-6 flex flex-col flex-1">
                     <div className="flex items-center justify-between mb-3">
                       <span
                         className={`px-3 py-1 rounded-full text-xs font-medium ${getLevelColor(workshop.level)}`}
@@ -307,7 +348,7 @@ const Workshops = () => {
                       </span>
                       <div className="flex items-center space-x-1 text-slate-400 text-sm">
                         <Users className="w-4 h-4" />
-                        <span>{workshop.participants}</span>
+                        <span>{workshop.participants}+</span>
                       </div>
                     </div>
 
@@ -315,13 +356,19 @@ const Workshops = () => {
                       {workshop.title}
                     </h3>
 
+                    {/* Highlight pill */}
+                    <div className="mb-3 inline-flex items-center gap-1.5 px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 rounded-full">
+                      <Rocket className="w-3 h-3 text-cyan-400" />
+                      <span className="text-cyan-300 text-xs font-medium">{workshop.highlight}</span>
+                    </div>
+
                     <p className="text-slate-400 text-sm mb-4 line-clamp-3">
                       {workshop.description}
                     </p>
 
                     {/* Tags */}
                     <div className="flex flex-wrap gap-2 mb-4">
-                      {workshop.tags.map((tag, tagIndex) => (
+                      {workshop.tags.slice(0, 4).map((tag, tagIndex) => (
                         <span
                           key={tagIndex}
                           className="px-2 py-1 bg-slate-900 text-slate-300 text-xs rounded-md border border-slate-800"
@@ -329,30 +376,35 @@ const Workshops = () => {
                           {tag}
                         </span>
                       ))}
+                      {workshop.tags.length > 4 && (
+                        <span className="px-2 py-1 bg-slate-900 text-slate-500 text-xs rounded-md border border-slate-800">
+                          +{workshop.tags.length - 4} more
+                        </span>
+                      )}
                     </div>
 
                     {/* Workshop Details */}
                     <div className="space-y-2 text-sm text-slate-400">
                       <div className="flex items-center space-x-2">
-                        <Calendar className="w-4 h-4" />
+                        <Calendar className="w-4 h-4 shrink-0" />
                         <span>{workshop.date}</span>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <Clock className="w-4 h-4" />
+                        <Clock className="w-4 h-4 shrink-0" />
                         <span>
-                          {workshop.time} ({workshop.duration})
+                          {workshop.time} · {workshop.duration}
                         </span>
                       </div>
-                      <div className="flex items-center space-x-2">
-                        <User className="w-4 h-4" />
-                        <span>Instructor: {workshop.instructor}</span>
+                      <div className="flex items-start space-x-2">
+                        <User className="w-4 h-4 shrink-0 mt-0.5" />
+                        <span className="line-clamp-2">{workshop.instructor}</span>
                       </div>
                     </div>
 
                     {/* Action Button */}
-                    <Link to="/contact" className="block mt-6 group">
-<CtaButton className="w-full" size="md" variant="primary">
-                        <span className="pr-2">Register Now</span>
+                    <Link to="/gallery" className="block mt-auto pt-6 group">
+                      <CtaButton className="w-full" size="md" variant="primary">
+                        <span className="pr-2">View Recap</span>
                         <ChevronRight className="w-5 h-5" aria-hidden="true" />
                       </CtaButton>
                     </Link>
@@ -375,21 +427,22 @@ const Workshops = () => {
           >
             <div className="bg-white/5 backdrop-blur-sm border border-slate-800 rounded-3xl p-12 max-w-4xl mx-auto">
               <h3 className="text-3xl font-semibold mb-4 text-slate-100">
-                Can't Find What <span className="text-cyan-300">You're Looking For?</span>
+                Want to Host or{' '}
+                <span className="text-cyan-300">Suggest a Workshop?</span>
               </h3>
               <p className="text-slate-400 mb-8 max-w-2xl mx-auto">
-                Have a specific topic in mind? We regularly add new workshops based on community
-                interest. Suggest a workshop and we'll make it happen!
+                We're always looking for industry experts, community leaders, and passionate
+                builders to collaborate with. Reach out and let's make it happen.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/contact">
-<CtaButton size="lg" variant="primary">
-                    Suggest a Workshop
+                  <CtaButton size="lg" variant="primary">
+                    Get in Touch
                   </CtaButton>
                 </Link>
                 <Link to="/gallery">
                   <GradientButton variant="ghost" size="lg">
-                    View Past Workshops
+                    View Past Events
                   </GradientButton>
                 </Link>
               </div>
