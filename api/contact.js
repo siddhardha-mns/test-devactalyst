@@ -1,3 +1,4 @@
+/* eslint-env node */
 import { z } from 'zod';
 
 const ContactSchema = z.object({
@@ -7,13 +8,28 @@ const ContactSchema = z.object({
   message: z.string().trim().min(10).max(2000),
 });
 
-const sanitize = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const HTML_ESCAPE_MAP = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  "'": '&#39;',
+  '/': '&#x2F;',
+  '`': '&#x60;',
+  '=': '&#x3D;',
+};
+
+/** Escape HTML entities and strip null bytes */
+const sanitize = (s) =>
+  String(s)
+    .replace(/\0/g, '')
+    .replace(/[&<>"'`=/]/g, (m) => HTML_ESCAPE_MAP[m] ?? m);
 
 const normalizeContactBody = (body = {}) => ({
-  name: body?.name ?? body?.Name ?? '',
-  email: body?.email ?? body?.Email ?? '',
-  subject: body?.subject ?? body?.Subject ?? '',
-  message: body?.message ?? body?.Message ?? '',
+  name: String(body?.name ?? body?.Name ?? '').slice(0, 100),
+  email: String(body?.email ?? body?.Email ?? '').slice(0, 200),
+  subject: String(body?.subject ?? body?.Subject ?? '').slice(0, 150),
+  message: String(body?.message ?? body?.Message ?? '').slice(0, 2000),
 });
 
 export default async function handler(req, res) {
@@ -43,43 +59,39 @@ export default async function handler(req, res) {
       receivedAt: new Date().toISOString(),
     };
 
-    // --- NEW GOOGLE SHEETS FORWARDING LOGIC ---
-    // 1. Paste your Google Web App URL here
-    const GOOGLE_SCRIPT_URL =
-      'https://script.google.com/macros/s/AKfycbxtCysmjMVjAQjJJHDUEgorxuRG08eqEOgLqCl1kXhBJOEWo2Pzh_qizVKIiCaq004_/exec';
+    const GOOGLE_SCRIPT_URL = process.env.VITE_GOOGLE_SCRIPT_URL;
 
-    // 2. Format the data so Google Apps Script can read it easily
+    if (!GOOGLE_SCRIPT_URL) {
+      console.error('SERVER_ERROR: VITE_GOOGLE_SCRIPT_URL is not set');
+      throw new Error('Internal Configuration Error');
+    }
+
     const formBody = new URLSearchParams();
     formBody.append('Name', payload.name);
     formBody.append('Email', payload.email);
     formBody.append('Subject', payload.subject);
     formBody.append('Message', payload.message);
 
-    // 3. Send the data to Google
     const googleResponse = await fetch(GOOGLE_SCRIPT_URL, {
       method: 'POST',
       body: formBody,
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     });
 
     if (!googleResponse.ok) {
       const text = await googleResponse.text();
-      console.error('Google error:', text);
+      console.error('Google Sheets error:', text);
       throw new Error('Google Sheets request failed');
     }
-    // ------------------------------------------
 
-    console.log('contact_submission forwarded successfully', payload);
+    console.log('contact_submission forwarded successfully', { email: payload.email });
     return res.status(200).json({ ok: true });
 
   } catch (err) {
     if (err instanceof z.ZodError) {
       return res.status(400).json({ error: err.errors?.[0]?.message || 'Invalid input' });
     }
-
-    console.error('contact_submission failed', err);
+    console.error('contact_submission failed', err?.message);
     return res.status(502).json({
       error: 'Unable to submit right now. Please try again in a moment.',
     });

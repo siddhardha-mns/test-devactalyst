@@ -12,8 +12,13 @@ const gradientButtonVariants = cva(
     "rounded-[11px] min-w-[132px] px-9 py-4",
     "text-base leading-[19px] font-[500] text-white",
     "font-sans font-bold",
-    "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#060e1a]",
     "disabled:pointer-events-none disabled:opacity-50",
+    // Micro-interaction: lift on hover, press on tap — GPU only
+    "transition-[transform,filter] duration-200",
+    "hover:-translate-y-0.5 hover:brightness-105",
+    "active:scale-[0.97] active:translate-y-0",
+    "select-none",
   ],
   {
     variants: {
