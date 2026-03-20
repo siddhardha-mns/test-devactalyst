@@ -47,31 +47,22 @@ const Home = () => {
         targets: '.loading-logo',
         scale: [0, 1],
         opacity: [0, 1],
-        duration: 700,
-        easing: 'easeOutElastic(1, .6)',
+        duration: 400,
+        easing: 'easeOutQuart',
       })
-      .add(
-        {
-          targets: '.loading-logo',
-          rotate: [0, 360],
-          duration: 900,
-          easing: 'easeInOutQuad',
-        },
-        '-=300',
-      )
       .add({
         targets: '.loading-text span',
         opacity: [0, 1],
         translateY: [16, 0],
-        duration: 600,
-        delay: anime.stagger(60),
+        duration: 300,
+        delay: anime.stagger(30),
         easing: 'easeOutExpo',
-      })
+      }, '-=100')
       .add({
         targets: '.loading-screen',
         opacity: [1, 0],
-        duration: 500,
-        delay: 600,
+        duration: 300,
+        delay: 200,
         easing: 'easeInExpo',
         complete: () => {
           setIsLoading(false);
@@ -131,9 +122,9 @@ const Home = () => {
           <div className="relative flex flex-col items-center justify-center z-10">
             <motion.div
               className="loading-logo mb-12 opacity-0 relative"
-              initial={{ scale: 0, rotate: -180 }}
-              animate={{ scale: 1, rotate: 0 }}
-              transition={{ duration: 0.9, type: 'spring' }}
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.5, type: 'spring' }}
             >
               <div className="absolute inset-0 -z-10 flex items-center justify-center">
                 <div className="w-56 h-56 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-cyan-400/25 via-blue-500/20 to-purple-600/25 blur-3xl" />
