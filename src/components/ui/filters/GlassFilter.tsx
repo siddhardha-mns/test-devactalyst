@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 /**
  * A shared SVG filter for the liquid glass effect.
