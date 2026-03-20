@@ -127,6 +127,48 @@ const Projects = () => {
       description: "An innovative tool designed to identify 'Chandassu' (meter) in Telugu poetry. It helps poets and scholars analyze the rhythmic patterns and structures of Telugu literary works.",
       github: "https://github.com/DIVYANSH-TEJA-09/telugu-chandassu-identifier",
       live: "https://telugu-chandas-identifier.streamlit.app/"
+    },
+    {
+      title: "PulseAI",
+      creator: "J Raj Likhit",
+      description: "A personal portfolio frontend project showcasing development skills and projects.",
+      github: "https://github.com/Raj-Likhit/pulseai",
+      live: "https://pulse-ai-ui.vercel.app/"
+    },
+    {
+      title: "MedVault",
+      creator: "Girish Panchariya",
+      description: "AI-Powered Medical Record Management System designed to securely store and intelligently process patient information.",
+      github: "https://github.com/Girishp12113/MEDVAULT-Health-Care-and-Digital-Vault",
+      live: "https://medvault-fawn.vercel.app/"
+    },
+    {
+      title: "MANAKATHA",
+      creator: "Dhruv Gannaram",
+      description: "An interactive application supporting regional storytelling and literature.",
+      github: "https://github.com/Dhruv-git-tech/ManaKatha-.git",
+      live: "https://wyecxwv95uuajpvydoqf6e.streamlit.app/"
+    },
+    {
+      title: "KAATHABOOK",
+      creator: "Dhruv Gannaram",
+      description: "A digital ledger platform to track and manage day-to-day transactions effortlessly.",
+      github: "https://github.com/Dhruv-git-tech/KaathaBook.git",
+      live: "https://kaatha-book.vercel.app/"
+    },
+    {
+      title: "Brain Tumor AI Suite",
+      creator: "Divyansh Teja Edla",
+      description: "A comprehensive AI suite built using Federated Learning pipelines for precise and secure brain tumor analysis.",
+      github: "https://github.com/DIVYANSH-TEJA-09/BrainTumor-FL-Pipeline",
+      live: "https://huggingface.co/spaces/Divs0910/Brain-Tumor-AI-Suite"
+    },
+    {
+      title: "Certificate Generator",
+      creator: "MNS Siddhardha",
+      description: "An automated utility to generate and distribute participation certificates for AWS Cloud Club MECS events.",
+      github: "https://github.com/siddhardha-mns/certificate-generator/blob/main/app.py",
+      live: "https://awscc-mecs-certgen.streamlit.app"
     }
   ];
 
