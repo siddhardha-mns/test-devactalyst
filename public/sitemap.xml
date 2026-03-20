@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Replace YOUR-PRODUCTION-DOMAIN with the live domain -->
+  <!-- Generated from actual app routes. Replace YOUR-PRODUCTION-DOMAIN via VITE_SITE_URL env var. -->
   <url><loc>https://YOUR-PRODUCTION-DOMAIN/</loc></url>
-  <url><loc>https://YOUR-PRODUCTION-DOMAIN/about</loc></url>
+  <url><loc>https://YOUR-PRODUCTION-DOMAIN/projects</loc></url>
   <url><loc>https://YOUR-PRODUCTION-DOMAIN/workshops</loc></url>
   <url><loc>https://YOUR-PRODUCTION-DOMAIN/gallery</loc></url>
   <url><loc>https://YOUR-PRODUCTION-DOMAIN/team</loc></url>

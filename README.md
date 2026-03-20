@@ -2,10 +2,17 @@
 
 <div align="center">
   <img src="https://img.shields.io/badge/React-18.2.0-blue?style=for-the-badge&logo=react" alt="React" />
+<<<<<<< HEAD
   <img src="https://img.shields.io/badge/TypeScript-5.9.3-blue?style=for-the-badge&logo=typescript" alt="TypeScript" />
   <img src="https://img.shields.io/badge/Tailwind_CSS-3.3.0-38B2AC?style=for-the-badge&logo=tailwind-css" alt="Tailwind CSS" />
   <img src="https://img.shields.io/badge/Vite-4.4.5-646CFF?style=for-the-badge&logo=vite" alt="Vite" />
   <img src="https://img.shields.io/badge/Framer_Motion-12.23.24-black?style=for-the-badge&logo=framer" alt="Framer Motion" />
+=======
+  <img src="https://img.shields.io/badge/TypeScript-5.7.0-blue?style=for-the-badge&logo=typescript" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-3.3.0-38B2AC?style=for-the-badge&logo=tailwind-css" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/Vite-6.0.0-646CFF?style=for-the-badge&logo=vite" alt="Vite" />
+  <img src="https://img.shields.io/badge/Framer_Motion-12.0.0-black?style=for-the-badge&logo=framer" alt="Framer Motion" />
+>>>>>>> 9252f1b (Initial commit after modular refactor and audit remediation)
 </div>
 
 <div align="center">
@@ -127,6 +134,7 @@ npm run preview
 
 ### Core Technologies
 - **React 18.2.0** - Modern React with hooks and concurrent features
+<<<<<<< HEAD
 - **TypeScript 5.9.3** - Type safety and enhanced developer experience
 - **Vite 4.4.5** - Lightning fast build tool and dev server
 - **Tailwind CSS 3.3.0** - Utility-first CSS framework
@@ -134,6 +142,14 @@ npm run preview
 ### UI & Animation Libraries
 - **Framer Motion 12.23.24** - Production-ready motion library
 - **Motion** - Advanced animation utilities
+=======
+- **TypeScript 5.7.0** - Type safety and enhanced developer experience
+- **Vite 6.0.0** - Lightning fast build tool and dev server
+- **Tailwind CSS 3.3.0** - Utility-first CSS framework
+
+### UI & Animation Libraries
+- **Framer Motion 12.0.0** - Production-ready motion library
+>>>>>>> 9252f1b (Initial commit after modular refactor and audit remediation)
 - **Lucide React 0.263.1** - Beautiful & consistent icon library
 - **Class Variance Authority 0.7.1** - Component styling utilities
 
@@ -152,6 +168,7 @@ DevCatalyst/
 ├── 📂 src/
 │   ├── 🧩 components/
 │   │   ├── common/            # Shared layout/navigation
+<<<<<<< HEAD
 │   │   │   ├── Layout.jsx
 │   │   │   └── Navigation.jsx
 │   │   └── ui/                # UI component library
@@ -181,6 +198,29 @@ DevCatalyst/
 ├── ⚙️ tailwind.config.js     # Tailwind configuration
 ├── 📝 tsconfig.json          # TypeScript configuration
 ├── ⚡ vite.config.js         # Vite configuration
+=======
+│   │   │   ├── Layout.tsx
+│   │   │   └── Navigation.tsx
+│   │   └── ui/                # UI component library
+│   │       ├── stars-canvas.tsx          # ✨ Animated starfield
+│   │       ├── gradient-button.tsx       # 🎛️ Gradient button
+│   │       ├── LiquidButton.tsx          # 🔘 Glass buttons
+│   │       ├── StarBorder.tsx            # 🌟 Interactive border
+│   │       └── GlassFilter.tsx           # 🫧 Shared SVG filters
+│   ├── 🛠️ features/           # Feature-based modular architecture
+│   │   ├── home/              # Homepage feature
+│   │   ├── gallery/           # Gallery feature
+│   │   ├── workshops/         # Workshops feature
+│   │   └── ...                # Other modularized features
+│   ├── 🪝 hooks/              # Shared hooks
+│   ├── 🔧 lib/                # Shared utilities
+│   ├── 🎨 index.css           # Global styles
+│   ├── ⚛️ App.tsx            # Main app component
+│   └── 🚀 main.tsx           # Application entry point
+├── ⚙️ tailwind.config.js     # Tailwind configuration
+├── 📝 tsconfig.json          # TypeScript configuration
+├── ⚡ vite.config.ts         # Vite configuration
+>>>>>>> 9252f1b (Initial commit after modular refactor and audit remediation)
 └── 📋 package.json           # Dependencies and scripts
 ```
 

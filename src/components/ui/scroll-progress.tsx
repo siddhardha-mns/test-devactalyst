@@ -88,21 +88,28 @@ export const ScrollToTop: React.FC<{ targetRef?: React.RefObject<HTMLElement>; w
   return (
     <motion.button
       onClick={scrollToTop}
-      className={`${btnClasses} w-12 h-12 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-blue-500/50 flex items-center justify-center backdrop-blur-sm border border-white/20`}
+      className={`${btnClasses} w-12 h-12 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-blue-500/50 flex items-center justify-center backdrop-blur-sm border border-white/20 relative`}
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0 }}
       whileHover={{ scale: 1.1, boxShadow: '0 0 30px rgba(59, 130, 246, 0.8)' }}
       whileTap={{ scale: 0.9 }}
       transition={{ duration: 0.2 }}
+      aria-label="Scroll to top"
     >
+      {/* Pulse ring */}
+      <motion.span
+        className="absolute inset-0 rounded-full border-2 border-cyan-400/60 pointer-events-none"
+        animate={{ scale: [1, 1.55], opacity: [0.55, 0] }}
+        transition={{ duration: 1.6, repeat: Infinity, ease: 'easeOut' }}
+      />
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
         strokeWidth={2.5}
         stroke="currentColor"
-        className="w-6 h-6"
+        className="w-6 h-6 relative z-10"
       >
         <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
       </svg>

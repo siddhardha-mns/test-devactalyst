@@ -31,7 +31,7 @@ export function StarsCanvas({
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d')!;
+    const ctx = canvas.getContext('2d', { willReadFrequently: false })!;
     const doResize = () => {
       if (withinContainer) {
         const rect = canvas.getBoundingClientRect();
@@ -275,7 +275,7 @@ export function StarsCanvas({
       clearTimeout(meteorKick);
       ro?.disconnect();
     };
-  }, [transparent, maxStars, hue, brightness, speedMultiplier, twinkleIntensity, paused]);
+  }, [transparent, maxStars, hue, brightness, speedMultiplier, twinkleIntensity, paused, withinContainer]);
 
   return (
     <canvas
