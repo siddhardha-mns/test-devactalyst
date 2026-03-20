@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import {
   Mail,
   MessageSquare,
-  Phone,
   MapPin,
   Twitter,
   Linkedin,
@@ -100,40 +99,32 @@ const Contact = () => {
       icon: <Mail className="w-6 h-6" />,
       title: 'Email Us',
       description: 'Get in touch via email',
-      contact: 'hello@devcatalyst.dev',
-      action: 'mailto:hello@devcatalyst.dev',
+      contact: 'devcatalyst.2025@gmail.com',
+      action: 'mailto:devcatalyst.2025@gmail.com',
       color: 'from-[#07121f] to-[#0a1629]',
     },
     {
       icon: <MessageSquare className="w-6 h-6" />,
       title: 'Live Chat',
-      description: 'Chat with our team',
-      contact: 'Available 24/7',
-      action: '#',
-      color: 'from-[#07121f] to-[#0a1629]',
-    },
-    {
-      icon: <Phone className="w-6 h-6" />,
-      title: 'Call Us',
-      description: 'Speak directly with us',
-      contact: '+1 (555) 123-4567',
-      action: 'tel:+15551234567',
+      description: 'WhatsApp Community',
+      contact: 'Community Group',
+      action: 'https://chat.whatsapp.com/GOiqJnJuz1C9Fg85xIKpPl?mode=ac_t',
       color: 'from-[#07121f] to-[#0a1629]',
     },
     {
       icon: <MapPin className="w-6 h-6" />,
       title: 'Visit Us',
-      description: 'Come to our office',
-      contact: '123 Tech Street, Silicon Valley',
-      action: 'https://maps.google.com',
+      description: 'Come to our campus',
+      contact: 'Matrusri Engineering College',
+      action: 'https://maps.google.com/?q=Matrusri+Engineering+College',
       color: 'from-[#07121f] to-[#0a1629]',
     },
   ];
 
   const socialLinks = [
-    { icon: <Twitter className="w-6 h-6" />, name: 'X (Twitter)', url: 'https://twitter.com/devcatalyst', gradient: 'from-slate-800 to-slate-900', hoverGradient: 'from-cyan-500/20 to-blue-500/20' },
-    { icon: <Linkedin className="w-6 h-6" />, name: 'LinkedIn', url: 'https://linkedin.com/company/devcatalyst', gradient: 'from-blue-900/40 to-blue-800/40', hoverGradient: 'from-blue-500/20 to-blue-600/20' },
-    { icon: <Instagram className="w-6 h-6" />, name: 'Instagram', url: 'https://instagram.com/devcatalyst', gradient: 'from-pink-900/40 to-purple-800/40', hoverGradient: 'from-pink-500/20 to-purple-500/20' },
+    { icon: <Twitter className="w-6 h-6" />, name: 'X (Twitter)', url: 'https://x.com/dev_catalyst25', gradient: 'from-slate-800 to-slate-900', hoverGradient: 'from-cyan-500/20 to-blue-500/20' },
+    { icon: <Linkedin className="w-6 h-6" />, name: 'LinkedIn', url: 'https://www.linkedin.com/company/devcatalystt/posts/?feedView=all', gradient: 'from-blue-900/40 to-blue-800/40', hoverGradient: 'from-blue-500/20 to-blue-600/20' },
+    { icon: <Instagram className="w-6 h-6" />, name: 'Instagram', url: 'https://www.instagram.com/devcatalystt/', gradient: 'from-pink-900/40 to-purple-800/40', hoverGradient: 'from-pink-500/20 to-purple-500/20' },
   ];
 
   const faqs = [
@@ -211,7 +202,7 @@ const Contact = () => {
 
             {/* Animated Contact Methods Preview */}
             <motion.div
-              className="grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-6 max-w-4xl mx-auto"
+              className="grid grid-cols-1 sm:grid-cols-3 gap-y-8 gap-x-6 max-w-4xl mx-auto"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.8 }}
@@ -254,7 +245,7 @@ const Contact = () => {
               <p className="text-xl text-slate-200">Choose the method that works best for you</p>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+            <div className="grid md:grid-cols-3 gap-8 mb-20">
               {contactMethods.map((method, index) => (
                 <motion.a
                   key={index}
