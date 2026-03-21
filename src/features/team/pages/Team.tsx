@@ -35,7 +35,7 @@ const SOCIAL_MEDIA = [
   { name: 'Thanvi', role: 'Member', image: '/api/placeholder/300/300', linkedin: 'https://www.linkedin.com/in/thanvi-miryala-5385a7367/', github: '#', instagram: 'https://www.instagram.com/thanveei_', bio: 'Creative and curious, with a love for learning and trying new things. Enjoys collaborating with others and bringing fresh ideas to life. Always excited to grow, contribute, and be part of a vibrant community!' },
 ];
 
-const EVENT_PLANNING = [
+const OUTREACH_TEAM = [
   { name: 'Kranthi Kodati', role: 'Member', image: '/api/placeholder/300/300', linkedin: 'https://www.linkedin.com/in/kranthi-kodati-6b973232b', github: '#', instagram: 'https://www.instagram.com/kranthi_kodati', bio: "I'm a curious and creative individual who enjoys solving problems and exploring new ideas. I actively participate in clubs, contribute to events, and like learning things in a hands-on, innovative way." },
   { name: 'Vinuthna Athimamula', role: 'Member', image: '/api/placeholder/300/300', linkedin: 'https://www.linkedin.com/in/vinuthna-athimamula', github: 'https://www.github.com/in/Vinuthna-Athimamula', instagram: 'https://www.instagram.com/vinuthna__26', bio: "I'm a curious and creative individual who enjoys solving problems and exploring new ideas. I actively participate in clubs, contribute to events, and like learning things in a hands-on, innovative way." },
   { name: 'VAISHNAV CHALLA', role: 'Member', image: '/api/placeholder/300/300', linkedin: 'https://linkedin.com/in/vaishnav-challa-958b13399', github: '#', instagram: 'https://www.instagram.com/vaishnavchalla3101', bio: 'Driven and curious individual with a passion for learning, creativity, and making an impact.' },
@@ -43,13 +43,23 @@ const EVENT_PLANNING = [
   { name: 'Chiluveru Dikshitha', role: 'Member', image: '/api/placeholder/300/300', linkedin: 'https://linkedin.com/in/dikshitha-chiluveru', github: 'https://github.com/dikshitha-dev', instagram: 'https://www.instagram.com/dikshitha_05', bio: 'A Computer Science student driven by creativity and unconventional thinking. I focus on turning creative concepts into real and impactful outcomes.' },
   { name: 'Bharath pathi', role: 'Member', image: '/api/placeholder/300/300', linkedin: 'https://www.linkedin.com/in/bharath-naidu-61a2b5399/', github: '#', instagram: 'https://www.instagram.com/bharath_naidu_.30', bio: 'Lazyy' },
   { name: 'Sai Karthikeyan Koduri', role: 'Member', image: '/api/placeholder/300/300', linkedin: 'https://www.linkedin.com/in/sai-karthikeyan-koduri/', github: 'https://github.com/karthikeyankoduri', instagram: 'https://www.instagram.com/k4rth1keyan', bio: 'I like Agentic AI and Automation.' },
+  { name: 'Bavana N', role: 'Member', image: '/api/placeholder/300/300', linkedin: 'http://linkedin.com/in/bavana-narvaneni-944783341', github: 'https://github.com/bavna1', instagram: 'https://www.instagram.com/bav_naahh', bio: "Hey, I'm Bavana, a 2nd-year CSE student exploring tech and figuring out what I want to build the hard way. Badminton keeps me sane." },
+  { name: 'Hasini Parre', role: 'Member', image: '/api/placeholder/300/300', bio: 'Passionate about outreach and community building.' },
 ];
 
 const VISION_MAKERS = [
   { name: 'Kranthi Kodati', role: 'Member', image: '/api/placeholder/300/300', linkedin: 'https://www.linkedin.com/in/kranthi-kodati-6b973232b', github: '#', instagram: 'https://www.instagram.com/kranthi_kodati', bio: "I'm a curious and creative individual who enjoys solving problems and exploring new ideas." },
-  { name: 'Bavana N', role: 'Member', image: '/api/placeholder/300/300', linkedin: 'http://linkedin.com/in/bavana-narvaneni-944783341', github: 'https://github.com/bavna1', instagram: 'https://www.instagram.com/bav_naahh', bio: "Hey, I'm Bavana, a 2nd-year CSE student exploring tech and figuring out what I want to build the hard way. Badminton keeps me sane." },
   { name: 'Podisetty Mani Lithish', role: 'Member', image: '/api/placeholder/300/300', linkedin: 'https://linkedin.com/in/manilithishpodisetty', github: 'https://github.com/manilithishpodisetty', instagram: 'https://www.instagram.com/manilithish_1211', bio: 'I am currently pursuing my first year of BE, with a keen interest in technology and innovation. I am eager to learn, improve my skills, and gain practical experience.' },
   { name: 'Katamreddy sai', role: 'Editing team', image: '/api/placeholder/300/300', linkedin: '#', bio: "I'm a 2nd year student of CSE branch D section." },
+  {
+    name: 'R.Sai varun',
+    role: 'Member',
+    image: '/api/placeholder/300/300',
+    linkedin: 'https://www.linkedin.com/in/sai-varun-185b863b8',
+    github: 'https://github.com/varun5246',
+    instagram: 'https://www.instagram.com/saivarun_15',
+    bio: 'Passionate builder and tech enthusiast.',
+  },
 ];
 
 interface TeamMember {
@@ -209,7 +219,7 @@ const Team = () => {
       <Section title="Core Team" members={CORE_TEAM} />
       <Section title="Technical Team" members={TECH_TEAM} />
       <Section title="Social Media" members={SOCIAL_MEDIA} />
-      <Section title="Event Planning" members={EVENT_PLANNING} />
+      <Section title="Outreach Team" members={OUTREACH_TEAM} />
       <Section title="Vision Makers" members={VISION_MAKERS} />
     </Layout>
   );
