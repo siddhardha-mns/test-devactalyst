@@ -2,17 +2,10 @@
 
 <div align="center">
   <img src="https://img.shields.io/badge/React-18.2.0-blue?style=for-the-badge&logo=react" alt="React" />
-<<<<<<< HEAD
-  <img src="https://img.shields.io/badge/TypeScript-5.9.3-blue?style=for-the-badge&logo=typescript" alt="TypeScript" />
-  <img src="https://img.shields.io/badge/Tailwind_CSS-3.3.0-38B2AC?style=for-the-badge&logo=tailwind-css" alt="Tailwind CSS" />
-  <img src="https://img.shields.io/badge/Vite-4.4.5-646CFF?style=for-the-badge&logo=vite" alt="Vite" />
-  <img src="https://img.shields.io/badge/Framer_Motion-12.23.24-black?style=for-the-badge&logo=framer" alt="Framer Motion" />
-=======
   <img src="https://img.shields.io/badge/TypeScript-5.7.0-blue?style=for-the-badge&logo=typescript" alt="TypeScript" />
   <img src="https://img.shields.io/badge/Tailwind_CSS-3.3.0-38B2AC?style=for-the-badge&logo=tailwind-css" alt="Tailwind CSS" />
   <img src="https://img.shields.io/badge/Vite-6.0.0-646CFF?style=for-the-badge&logo=vite" alt="Vite" />
   <img src="https://img.shields.io/badge/Framer_Motion-12.0.0-black?style=for-the-badge&logo=framer" alt="Framer Motion" />
->>>>>>> 9252f1b (Initial commit after modular refactor and audit remediation)
 </div>
 
 <div align="center">
@@ -134,22 +127,12 @@ npm run preview
 
 ### Core Technologies
 - **React 18.2.0** - Modern React with hooks and concurrent features
-<<<<<<< HEAD
-- **TypeScript 5.9.3** - Type safety and enhanced developer experience
-- **Vite 4.4.5** - Lightning fast build tool and dev server
-- **Tailwind CSS 3.3.0** - Utility-first CSS framework
-
-### UI & Animation Libraries
-- **Framer Motion 12.23.24** - Production-ready motion library
-- **Motion** - Advanced animation utilities
-=======
 - **TypeScript 5.7.0** - Type safety and enhanced developer experience
 - **Vite 6.0.0** - Lightning fast build tool and dev server
 - **Tailwind CSS 3.3.0** - Utility-first CSS framework
 
 ### UI & Animation Libraries
 - **Framer Motion 12.0.0** - Production-ready motion library
->>>>>>> 9252f1b (Initial commit after modular refactor and audit remediation)
 - **Lucide React 0.263.1** - Beautiful & consistent icon library
 - **Class Variance Authority 0.7.1** - Component styling utilities
 
@@ -168,37 +151,6 @@ DevCatalyst/
 ├── 📂 src/
 │   ├── 🧩 components/
 │   │   ├── common/            # Shared layout/navigation
-<<<<<<< HEAD
-│   │   │   ├── Layout.jsx
-│   │   │   └── Navigation.jsx
-│   │   └── ui/                # UI component library
-│   │       ├── stars-canvas.tsx          # ✨ Animated starfield (supports withinContainer)
-│   │       ├── container-scroll-animation.tsx # 📦 Scroll-driven container (demo wrapper)
-│   │       ├── gradient-button.tsx       # 🎛️ Gradient button
-│   │       ├── liquid-glass-button.tsx   # 🔘 Glass buttons
-│   │       ├── star-border.tsx           # 🌟 Interactive border
-│   │       ├── scroll-progress.tsx       # 📈 Scroll progress + to-top
-│   │       ├── modal.tsx                 # 🪟 Modal
-│   │       └── cta-button.tsx            # 🔔 CTA variant
-│   ├── 📄 pages/              # Application pages
-│   │   ├── Home.jsx           # 🏠 Homepage with loading animation
-│   │   ├── About.jsx          # 📖 About us with glowing cards
-│   │   ├── Workshops.jsx      # 🎯 Workshop catalog
-│   │   ├── Gallery.jsx        # 🖼️ Project gallery
-│   │   ├── Team.jsx           # 👥 Team page
-│   │   ├── Contact.jsx        # 📞 Contact forms
-│   │   └── Components.jsx     # 🎨 Component showcase
-│   ├── 🪝 hooks/
-│   │   └── useScrollEffects.ts # Scroll utilities
-│   ├── 🔧 lib/
-│   │   └── utils.ts           # Utility functions
-│   ├── 🎨 index.css           # Global styles
-│   ├── ⚛️ App.jsx            # Main app component
-│   └── 🚀 main.jsx           # Application entry point
-├── ⚙️ tailwind.config.js     # Tailwind configuration
-├── 📝 tsconfig.json          # TypeScript configuration
-├── ⚡ vite.config.js         # Vite configuration
-=======
 │   │   │   ├── Layout.tsx
 │   │   │   └── Navigation.tsx
 │   │   └── ui/                # UI component library
@@ -211,6 +163,7 @@ DevCatalyst/
 │   │   ├── home/              # Homepage feature
 │   │   ├── gallery/           # Gallery feature
 │   │   ├── workshops/         # Workshops feature
+│   │   ├── team/              # Team management feature
 │   │   └── ...                # Other modularized features
 │   ├── 🪝 hooks/              # Shared hooks
 │   ├── 🔧 lib/                # Shared utilities
@@ -220,7 +173,6 @@ DevCatalyst/
 ├── ⚙️ tailwind.config.js     # Tailwind configuration
 ├── 📝 tsconfig.json          # TypeScript configuration
 ├── ⚡ vite.config.ts         # Vite configuration
->>>>>>> 9252f1b (Initial commit after modular refactor and audit remediation)
 └── 📋 package.json           # Dependencies and scripts
 ```
 
@@ -311,6 +263,11 @@ We welcome contributions from developers of all levels!
 - 🏆 **100+ Projects Built**
 - 🎯 **50+ Workshops Conducted**
 - 🌟 **Industry Partnerships**
+
+### Recent Updates (March 2026)
+- 📢 **Team Restructuring**: Renamed "Event Planning" to **Outreach Team** for better alignment with community goals.
+- 🤝 **New Members**: Welcomed **Hasini Parre** to the Outreach Team and **R.Sai varun** to the Vision Makers.
+- 🚀 **Bavana N** transitioned to the Outreach Team to lead event-based initiatives.
 
 ---
 
