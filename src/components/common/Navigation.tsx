@@ -1,44 +1,29 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import { hasActiveEvents } from '@/data/site-content';
 
-const items = [
-  { name: 'Network', path: '#about' },
-  { name: 'Projects', path: '#projects' },
-  { name: 'Workshops', path: '#workshops' },
-  { name: 'Gallery', path: '#gallery' },
-  { name: 'Team', path: '#team' },
+const links = [
+  { label: 'Events', to: '/events' },
+  { label: 'Projects', to: '/projects' },
+  { label: 'Gallery', to: '/gallery' },
+  { label: 'Team', to: '/team' },
+  { label: 'Contact', to: '/contact' },
 ];
 
-const Navigation = ({ demoMode: _demoMode = false }: { demoMode?: boolean }) => {
+export default function Navigation({ demoMode: _demoMode = false }: { demoMode?: boolean }) {
   const [open, setOpen] = useState(false);
-  const location = useLocation();
-  const linkClass = (path: string) =>
-    `rounded-full px-3 py-2 text-sm font-medium transition ${location.hash === path
-      ? 'bg-blue-50 text-blue-700'
-      : 'text-slate-600 hover:bg-slate-50 hover:text-slate-950'}`;
+  const { pathname } = useLocation();
+  const visibleLinks = hasActiveEvents ? [{ label: 'What’s on', to: '/whats-on' }, ...links] : links;
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between rounded-2xl border border-slate-200/90 bg-white/85 px-3 py-2 shadow-[0_10px_35px_rgba(30,64,175,0.08)] backdrop-blur-xl">
-        <Link to="/" className="flex items-center gap-2 px-2" aria-label="DevCatalyst home">
-          <img src="/devcatalyst-logo.svg" alt="" className="h-9 w-9 rounded-lg" />
-          <span className="text-sm font-bold tracking-tight text-slate-950">DevCatalyst</span>
-        </Link>
-        <div className="hidden items-center gap-1 md:flex">
-          {items.map((item) => <a key={item.path} href={item.path} className={linkClass(item.path)}>{item.name}</a>)}
-        </div>
-        <a href="https://beacons.ai/devcatalyst" target="_blank" rel="noreferrer" className="hidden rounded-xl bg-blue-700 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-800 md:block">Join us</a>
-        <button type="button" onClick={() => setOpen(!open)} className="rounded-xl p-2 text-slate-700 md:hidden" aria-label={open ? 'Close menu' : 'Open menu'}>
-          {open ? <X size={21} /> : <Menu size={21} />}
-        </button>
+    <header className="sticky top-0 z-50 border-b border-[#dedcd5] bg-[#f7f6f2]/95 backdrop-blur-sm">
+      <nav className="mx-auto flex h-[4.6rem] max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-10">
+        <Link to="/" className="text-lg font-extrabold tracking-[-.07em]" aria-label="DevCatalyst home">DEV<span className="text-[#2455c9]">/</span>CATALYST</Link>
+        <div className="hidden items-center gap-6 lg:flex">{visibleLinks.map((link) => <Link key={link.to} className="nav-link" to={link.to} aria-current={pathname === link.to ? 'page' : undefined}>{link.label}</Link>)}</div>
+        <button type="button" className="p-2 lg:hidden" onClick={() => setOpen((value) => !value)} aria-label={open ? 'Close menu' : 'Open menu'}>{open ? <X size={21} /> : <Menu size={21} />}</button>
       </nav>
-      {open && <div className="mx-auto mt-2 max-w-6xl rounded-2xl border border-slate-200 bg-white p-3 shadow-xl md:hidden">
-        {items.map((item) => <a key={item.path} href={item.path} onClick={() => setOpen(false)} className={`block ${linkClass(item.path)}`}>{item.name}</a>)}
-        <a href="https://beacons.ai/devcatalyst" target="_blank" rel="noreferrer" className="mt-2 block rounded-xl bg-blue-700 px-4 py-2.5 text-center text-sm font-semibold text-white">Join us</a>
-      </div>}
+      {open && <div className="border-t border-[#dedcd5] bg-[#f7f6f2] px-5 py-6 lg:hidden"><div className="mx-auto grid max-w-7xl gap-4">{visibleLinks.map((link) => <Link key={link.to} to={link.to} onClick={() => setOpen(false)} className="editorial-serif text-3xl tracking-[-.04em]">{link.label}</Link>)}</div></div>}
     </header>
   );
-};
-
-export default Navigation;
+}
