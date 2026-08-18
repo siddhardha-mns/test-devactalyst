@@ -13,6 +13,11 @@ const setSession = (res, token, maxAge = sessionHours * 60 * 60) => {
   res.setHeader('Set-Cookie', `${cookieName}=${token}; Path=/; HttpOnly; SameSite=Strict${secure}; Max-Age=${maxAge}`);
 };
 
+export function isAdminRequest(req) {
+  const secret = process.env.ADMIN_SESSION_SECRET;
+  return Boolean(secret && isValidSession(getCookies(req.headers.cookie)[cookieName], secret));
+}
+
 export default function handler(req, res) {
   const password = process.env.ADMIN_PASSWORD;
   const secret = process.env.ADMIN_SESSION_SECRET;
