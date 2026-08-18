@@ -12,7 +12,11 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   const location = useLocation();
 
-  useEffect(() => window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior }), [location.pathname]);
+  useEffect(() => {
+    // Use the broadly supported overload. `behavior: "instant"` is not a
+    // standard ScrollToOptions value and can break route effects in browsers.
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return <div className="site-shell bg-[#f7f6f2] text-[#15171b]"><Navigation /><main>{children}</main><SiteFooter /></div>;
 }
