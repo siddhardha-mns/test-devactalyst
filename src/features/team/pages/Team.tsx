@@ -82,7 +82,7 @@ const Card = ({ m, isExpanded, onToggle }: CardProps) => {
   return (
     <div
       className={[
-        'dc-card flex flex-col items-center text-center cursor-pointer',
+        'dc-card flex flex-col items-center text-center cursor-pointer bg-white',
         'p-5 md:p-6 self-start',
         // Micro-interaction: lift + ring on expand, press feedback on tap
         'transition-[transform,box-shadow,border-color] duration-200',
@@ -95,8 +95,8 @@ const Card = ({ m, isExpanded, onToggle }: CardProps) => {
       aria-expanded={isExpanded}
       onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onToggle(); } }}
     >
-      <h3 className="text-xl md:text-2xl font-bold text-white">{m.name}</h3>
-      <p className="text-cyan-300 font-medium mb-2 text-base md:text-lg">{m.role}</p>
+      <h3 className="text-xl md:text-2xl font-bold text-slate-950">{m.name}</h3>
+      <p className="text-blue-700 font-medium mb-2 text-base md:text-lg">{m.role}</p>
 
       {/* Bio — CSS max-height accordion, no JS animation overhead */}
       <div
@@ -108,7 +108,7 @@ const Card = ({ m, isExpanded, onToggle }: CardProps) => {
         }}
       >
         {m.bio && (
-          <p className="text-slate-300 text-sm md:text-base mt-2 mb-3">{m.bio}</p>
+          <p className="text-slate-600 text-sm md:text-base mt-2 mb-3">{m.bio}</p>
         )}
       </div>
 
@@ -123,9 +123,9 @@ const Card = ({ m, isExpanded, onToggle }: CardProps) => {
             target="_blank"
             rel="noreferrer"
             aria-label={`${m.name} on LinkedIn`}
-            className="p-2.5 rounded-xl bg-white/5 border border-white/10 hover:bg-blue-500/20 hover:border-blue-400/40 hover:scale-110 active:scale-95 transition-[transform,background-color,border-color] duration-150 touch-target"
+            className="p-2.5 rounded-xl bg-blue-50 border border-blue-100 text-blue-700 hover:bg-blue-100 hover:border-blue-300 hover:scale-110 active:scale-95 transition-[transform,background-color,border-color] duration-150 touch-target"
           >
-            <Linkedin className="w-5 h-5 text-white" />
+            <Linkedin className="w-5 h-5" />
           </a>
         )}
         {m.github && m.github !== '#' && (
@@ -134,9 +134,9 @@ const Card = ({ m, isExpanded, onToggle }: CardProps) => {
             target="_blank"
             rel="noreferrer"
             aria-label={`${m.name} on GitHub`}
-            className="p-2.5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/15 hover:border-white/25 hover:scale-110 active:scale-95 transition-[transform,background-color,border-color] duration-150 touch-target"
+            className="p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 hover:bg-slate-100 hover:border-slate-300 hover:scale-110 active:scale-95 transition-[transform,background-color,border-color] duration-150 touch-target"
           >
-            <Github className="w-5 h-5 text-white" />
+            <Github className="w-5 h-5" />
           </a>
         )}
         {m.instagram && m.instagram !== '#' && (
@@ -145,9 +145,9 @@ const Card = ({ m, isExpanded, onToggle }: CardProps) => {
             target="_blank"
             rel="noreferrer"
             aria-label={`${m.name} on Instagram`}
-            className="p-2.5 rounded-xl bg-white/5 border border-white/10 hover:bg-pink-500/20 hover:border-pink-400/40 hover:scale-110 active:scale-95 transition-[transform,background-color,border-color] duration-150 touch-target"
+            className="p-2.5 rounded-xl bg-pink-50 border border-pink-100 text-pink-700 hover:bg-pink-100 hover:border-pink-300 hover:scale-110 active:scale-95 transition-[transform,background-color,border-color] duration-150 touch-target"
           >
-            <Instagram className="w-5 h-5 text-white" />
+            <Instagram className="w-5 h-5" />
           </a>
         )}
       </div>
@@ -167,7 +167,7 @@ const Section = ({ title, members }: SectionProps) => {
   return (
     <section className="relative py-14 px-6">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold mb-10 accent-heading">
+        <h2 className="text-3xl md:text-4xl font-bold mb-10 text-slate-950">
           {title}
         </h2>
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 items-start">
@@ -194,23 +194,23 @@ const Team = () => {
         <meta name="description" content="Meet the passionate students, builders, and mentors driving DevCatalyst forward. Learn about our core team and technical leads." />
       </Helmet>
 
-      <section className="relative min-h-[60vh] flex items-center justify-center px-6 pt-24">
+      <section className="relative min-h-[60vh] flex items-center justify-center px-6 pt-24 bg-[#f7faff] border-b border-blue-100">
         <motion.div
           className="max-w-6xl mx-auto text-center relative z-10"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/5 border border-cyan-500/30 rounded-full text-slate-200 backdrop-blur">
-            <Users className="w-5 h-5 text-cyan-300" />
+          <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-blue-200 rounded-full text-slate-700 shadow-sm">
+            <Users className="w-5 h-5 text-blue-700" />
             Our Team
           </div>
-          <h1 className="text-4xl md:text-7xl font-bold mt-6 text-white leading-tight">
+          <h1 className="text-4xl md:text-7xl font-bold mt-6 text-slate-950 leading-tight">
             <span>Meet the </span>
             <GradientText>People</GradientText>
             <span> behind DevCatalyst</span>
           </h1>
-          <p className="text-slate-300 text-lg md:text-xl mt-6 max-w-3xl mx-auto">
+          <p className="text-slate-600 text-lg md:text-xl mt-6 max-w-3xl mx-auto">
             Passionate builders, mentors, and designers driving our mission forward.
           </p>
         </motion.div>

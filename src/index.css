@@ -41,10 +41,10 @@
     --depth-bg: #050608;
 
     /* Layered greys for dark UI */
-    --dc-bg: #060e1a;
-    --dc-card: #0a1629; /* deep navy content card bg */
-    --dc-border: #14284a; /* blue-tinged borders/dividers */
-    --dc-text: #e6e6e6;
+    --dc-bg: #f7faff;
+    --dc-card: #ffffff;
+    --dc-border: #dbeafe;
+    --dc-text: #0f172a;
 
     /* Cursor spotlight position */
     --spot-x: 50%;
@@ -142,6 +142,20 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--dc-bg);
   color: var(--dc-text);
+}
+
+.site-main {
+  background-color: #f7faff;
+  background-image: radial-gradient(ellipse at 50% 0%, rgba(191, 219, 254, 0.54), transparent 36rem);
+  background-attachment: fixed;
+}
+
+.site-flow-section { background: transparent; }
+.eyebrow { color: #1d4ed8; font-size: .72rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+.flow-heading { margin-top: 1rem; max-width: 38rem; color: #0f172a; font-size: clamp(2.4rem, 5vw, 4.8rem); font-weight: 650; letter-spacing: -.065em; line-height: .98; }
+.gallery-ribbon {
+  background: radial-gradient(circle at 78% 20%, rgba(37,99,235,.58), transparent 25%), linear-gradient(110deg, #dbeafe 0%, #eff6ff 45%, #bfdbfe 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.75), 0 20px 50px rgba(37,99,235,.10);
 }
 
 /* Ensure glowing effects are visible */
@@ -344,13 +358,13 @@ a:hover { color: var(--accent-start); }
   }
 }
 
-/* Reusable dark cards and dividers */
+/* Reusable cards and dividers */
 @layer components {
   .dc-card {
     background-color: var(--dc-card);
     border: 1px solid var(--dc-border);
     border-radius: 1.25rem;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    box-shadow: 0 10px 30px rgba(15,23,42,0.06);
     transition:
       transform var(--transition-base),
       box-shadow var(--transition-base),
@@ -360,7 +374,7 @@ a:hover { color: var(--accent-start); }
   }
   .dc-card:hover {
     transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 0 20px rgba(0,198,255,0.22), 0 16px 40px rgba(0,0,0,0.45);
+    box-shadow: 0 0 20px rgba(37,99,235,0.14), 0 16px 40px rgba(15,23,42,0.10);
     border-color: color-mix(in oklab, var(--dc-border) 60%, var(--accent-start));
   }
   .dc-divider { border-color: var(--dc-border); }
@@ -461,4 +475,72 @@ a:hover { color: var(--accent-start); }
     --border-color-1: hsla(320, 75%, 90%, 0.2);
     --border-color-2: hsla(320, 50%, 90%, 0.75);
   }
+}
+
+/* Light-theme compatibility for the original route components. */
+.site-main .text-white,
+.site-main .text-slate-100 {
+  color: #0f172a;
+}
+.site-main .text-slate-200,
+.site-main .text-slate-300 {
+  color: #475569;
+}
+.site-main .text-slate-400,
+.site-main .text-slate-500 {
+  color: #64748b;
+}
+.site-main .bg-slate-950,
+.site-main .bg-slate-900,
+.site-main .bg-slate-800,
+.site-main .bg-\[\#060e1a\],
+.site-main .bg-\[\#07121f\] {
+  background-color: #ffffff;
+}
+.site-main .bg-\[\#07121f\]\/60,
+.site-main .bg-\[\#07121f\]\/70 {
+  background-color: rgba(255, 255, 255, 0.92);
+}
+.site-main .from-\[\#07121f\] {
+  --tw-gradient-from: #eff6ff var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(239 246 255 / 0) var(--tw-gradient-to-position);
+}
+.site-main .to-\[\#0a1629\] {
+  --tw-gradient-to: #ffffff var(--tw-gradient-to-position);
+}
+.site-main .border-slate-800,
+.site-main .border-slate-700,
+.site-main .border-white\/10,
+.site-main .border-white\/20 {
+  border-color: #dbeafe;
+}
+.site-main .bg-white\/5,
+.site-main .bg-white\/10 {
+  background-color: rgba(239, 246, 255, 0.82);
+}
+.site-main .theme-inverse .text-white,
+.site-main .theme-inverse .text-slate-100 {
+  color: #ffffff;
+}
+.site-main .theme-inverse .text-slate-200,
+.site-main .theme-inverse .text-slate-300 {
+  color: #dbeafe;
+}
+.site-main .theme-inverse .border-white\/10,
+.site-main .theme-inverse .border-white\/20 {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+.site-main .theme-inverse .bg-white\/5,
+.site-main .theme-inverse .bg-white\/10 {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.footer-grid {
+  background-image: linear-gradient(rgba(96, 165, 250, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(96, 165, 250, 0.08) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(to bottom, black, transparent 75%);
+  animation: footerGridDrift 16s linear infinite;
+}
+@keyframes footerGridDrift {
+  to { background-position: 44px 44px; }
 }
