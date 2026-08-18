@@ -1,3 +1,4 @@
+/* eslint-env node */
 import { createHmac, randomBytes, timingSafeEqual } from 'node:crypto';
 
 const cookieName = 'devcatalyst_admin';
