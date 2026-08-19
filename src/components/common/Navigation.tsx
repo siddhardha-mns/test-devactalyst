@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { hasActiveEvents } from '@/data/site-content';
+import { loadPublishedEvents } from '@/lib/apps-script';
 
 const links = [
   { label: 'Events', to: '/events' },
@@ -13,8 +14,12 @@ const links = [
 
 export default function Navigation({ demoMode: _demoMode = false }: { demoMode?: boolean }) {
   const [open, setOpen] = useState(false);
+  const [hasRemoteActiveEvents, setHasRemoteActiveEvents] = useState<boolean | null>(null);
   const { pathname } = useLocation();
-  const visibleLinks = hasActiveEvents ? [{ label: 'What’s on', to: '/whats-on' }, ...links] : links;
+  const hasUpcomingEvents = hasRemoteActiveEvents ?? hasActiveEvents;
+  const visibleLinks = hasUpcomingEvents ? [{ label: 'What’s on', to: '/whats-on' }, ...links] : links;
+
+  useEffect(() => { loadPublishedEvents().then((loadedEvents) => setHasRemoteActiveEvents(loadedEvents.some((event) => event.status === 'active'))).catch(() => setHasRemoteActiveEvents(null)); }, []);
 
   return (
     <header className="sticky top-0 z-50 border-b border-[#dedcd5] bg-[#f7f6f2]/95 backdrop-blur-sm">
