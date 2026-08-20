@@ -9,6 +9,25 @@ type AppsScriptPayload = {
   eventPhotos?: Record<string, unknown>[];
 };
 
+function normalizeDriveImageUrl(value: unknown): string {
+  const source = String(value ?? '').trim();
+  if (!source) return '';
+
+  try {
+    const url = new URL(source);
+    if (url.hostname !== 'drive.google.com') return source;
+
+    const fileId = url.searchParams.get('id') ?? url.pathname.match(/\/file\/d\/([^/]+)/)?.[1];
+    if (fileId && /^[A-Za-z0-9_-]+$/.test(fileId)) {
+      return `https://drive.google.com/thumbnail?id=${encodeURIComponent(fileId)}&sz=w1600`;
+    }
+  } catch {
+    return source;
+  }
+
+  return source;
+}
+
 export async function loadPublishedEvents(): Promise<CommunityEvent[]> {
   const response = await fetch(APPS_SCRIPT_URL);
   if (!response.ok) throw new Error('Apps Script content request failed.');
@@ -18,7 +37,7 @@ export async function loadPublishedEvents(): Promise<CommunityEvent[]> {
   const photosByEventId = (payload.eventPhotos ?? []).reduce<Record<string, NonNullable<CommunityEvent['images']>>>(
     (photos, photo) => {
       const eventId = String(photo.eventId ?? '');
-      const url = String(photo.driveUrl ?? '');
+      const url = normalizeDriveImageUrl(photo.driveUrl);
       if (!eventId || !url || photo.published === false) return photos;
 
       const image = {
