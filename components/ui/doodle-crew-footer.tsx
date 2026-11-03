@@ -126,7 +126,7 @@ export default function DoodleCrewFooter() {
   }, []);
 
   return (
-    <footer ref={footerRef} id="footer" className="relative w-full overflow-hidden border-t border-catalyst-line bg-catalyst-lime px-0 pt-[clamp(110px,15vh,180px)] text-[#0f0f0f]">
+    <footer ref={footerRef} id="footer" style={{ fontFamily: 'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' }} className="relative w-full overflow-hidden border-t border-catalyst-line bg-catalyst-lime px-0 pt-[clamp(110px,15vh,180px)] text-[#0f0f0f]">
       <div className="dc-footer-micro pointer-events-none absolute left-[4vw] top-12 hidden border-l border-black pl-4 font-mono text-[11px] uppercase leading-[2.1] tracking-[0.3em] lg:block">Student led<br />Tech<br />Community</div>
       <div className="dc-footer-micro pointer-events-none absolute right-[4vw] top-12 hidden font-mono text-[11px] uppercase leading-[2.1] tracking-[0.3em] lg:block"><Sparkle className="mb-2 block w-4" />Ideas<br />People<br />Projects<br />Impact<span className="mt-2 block h-px w-11 -rotate-2 bg-black" /></div>
 
