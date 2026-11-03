@@ -29,9 +29,9 @@ export default function PartnerWithDevCatalyst() {
       <SiteNav />
       <section data-nav-theme="light" aria-labelledby="partner-title" className={styles.hero}>
         <div className={styles.heroPhoto}>
-          <Image src="/event-gallery/catalyst-days/01.jpg" alt="The Catalyst Days student community gathered for a group photograph" fill priority sizes="(min-width: 900px) 60vw, 100vw" />
+          <Image src="/event-gallery/catalyst-days/01.jpg" alt="The Catalyst Days 2026 student community gathered for a group photograph" fill priority sizes="(min-width: 900px) 60vw, 100vw" />
           <span className={styles.photoShade} />
-          <span className={styles.photoCaption}>A shared moment at Catalyst Days.</span>
+          <span className={styles.photoCaption}>A shared moment at Catalyst Days 2026.</span>
         </div>
         <div className={styles.heroCopy}>
           <h1 id="partner-title">Good things<br />happen<br /><em>together.</em></h1>

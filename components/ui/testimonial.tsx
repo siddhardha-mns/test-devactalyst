@@ -28,6 +28,12 @@ export default function ClientFeedback() {
     let activeTouch = false;
     let resumeAt = 0;
     let isVisible = true;
+    let dragging = false;
+    let captured = false;
+    let dragStartX = 0;
+    let dragStartScroll = 0;
+    let didDrag = false;
+    let suppressClick = false;
 
     const onMediaChange = () => {
       isMobile = mobileQuery.matches;
@@ -116,12 +122,53 @@ export default function ClientFeedback() {
     const leave = () => {
       hovered = false;
     };
-    const down = () => {
+    const down = (event: PointerEvent) => {
       touching = true;
+      suppressClick = false;
+      if (event.pointerType !== "mouse" || event.button !== 0) return;
+      dragging = true;
+      captured = false;
+      didDrag = false;
+      dragStartX = event.clientX;
+      dragStartScroll = viewport.scrollLeft;
     };
     const release = () => {
+      if (dragging) {
+        suppressClick = didDrag;
+        dragging = false;
+        captured = false;
+        viewport.style.userSelect = "";
+      }
       touching = false;
       resumeAt = performance.now() + 800;
+    };
+    const move = (event: PointerEvent) => {
+      if (!dragging) return;
+      if (event.buttons === 0) {
+        release();
+        return;
+      }
+      const delta = event.clientX - dragStartX;
+      if (!didDrag && Math.abs(delta) > 4) {
+        didDrag = true;
+        viewport.style.userSelect = "none";
+      }
+      if (!didDrag) return;
+      if (!captured) {
+        captured = true;
+        viewport.setPointerCapture(event.pointerId);
+      }
+      viewport.scrollLeft = dragStartScroll - delta;
+      wrap();
+    };
+    const click = (event: MouseEvent) => {
+      if (!suppressClick) return;
+      suppressClick = false;
+      event.preventDefault();
+      event.stopPropagation();
+    };
+    const dragStart = (event: DragEvent) => {
+      event.preventDefault();
     };
     const touchStart = () => {
       activeTouch = true;
@@ -144,6 +191,9 @@ export default function ClientFeedback() {
     viewport.addEventListener("pointerenter", enter);
     viewport.addEventListener("pointerleave", leave);
     viewport.addEventListener("pointerdown", down);
+    viewport.addEventListener("click", click, true);
+    viewport.addEventListener("dragstart", dragStart);
+    window.addEventListener("pointermove", move);
     viewport.addEventListener("touchstart", touchStart, { passive: true });
     viewport.addEventListener("wheel", wheel, { passive: true });
     window.addEventListener("pointerup", release);
@@ -153,6 +203,7 @@ export default function ClientFeedback() {
 
     return () => {
       stopAnimation();
+      viewport.style.userSelect = "";
       io.disconnect();
       resizeObserver.disconnect();
       mobileQuery.removeEventListener("change", onMediaChange);
@@ -161,6 +212,9 @@ export default function ClientFeedback() {
       viewport.removeEventListener("pointerenter", enter);
       viewport.removeEventListener("pointerleave", leave);
       viewport.removeEventListener("pointerdown", down);
+      viewport.removeEventListener("click", click, true);
+      viewport.removeEventListener("dragstart", dragStart);
+      window.removeEventListener("pointermove", move);
       viewport.removeEventListener("touchstart", touchStart);
       viewport.removeEventListener("wheel", wheel);
       window.removeEventListener("pointerup", release);
@@ -178,7 +232,7 @@ export default function ClientFeedback() {
           <p className="max-w-2xl text-base leading-7 text-catalyst-muted sm:text-lg">Notes from people and teams who have worked alongside DevCatalyst.</p>
         </div>
       </header>
-      <div ref={viewportRef} className={styles.viewport}>
+      <div ref={viewportRef} className={styles.viewport} tabIndex={0} role="region" aria-label="Testimonials, scroll horizontally">
         <div className={styles.track}>
           {[0, 1, 2].map((copy) => (
             <ul ref={copy === 1 ? groupRef : undefined} key={copy} className={styles.group} aria-hidden={copy !== 1 ? true : undefined}>

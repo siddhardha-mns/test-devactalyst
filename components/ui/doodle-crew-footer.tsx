@@ -14,6 +14,13 @@ const links = [
   { label: "GitHub", href: "https://github.com/DevCatalyst-OSS/", external: true },
 ];
 
+const socials = [
+  { label: "Instagram", href: "https://www.instagram.com/devcatalystt/" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/devcatalystt" },
+  { label: "X", href: "https://x.com/dev_catalyst25" },
+  { label: "WhatsApp", href: "https://chat.whatsapp.com/GOiqJnJuz1C9Fg85xIKpPl?mode=ac_t" },
+];
+
 function Sparkle({ className = "" }: { className?: string }) {
   return <svg viewBox="0 0 40 40" className={className} aria-hidden="true"><path d="M20 3l3.4 13.6L37 20l-13.6 3.4L20 37l-3.4-13.6L3 20l13.6-3.4z" fill="white" stroke="currentColor" strokeWidth="2.5" strokeLinejoin="round" /></svg>;
 }
@@ -139,7 +146,7 @@ export default function DoodleCrewFooter() {
         <h3 className="dc-footer-reveal mt-[clamp(56px,8vh,90px)] text-center text-[clamp(20px,2.6vw,36px)] font-black tracking-[-.035em]">Students come together. <span className="text-catalyst-muted">Community grows from there.</span></h3>
         <div className="dc-footer-reveal mt-[30px] flex flex-wrap justify-center gap-[14px] px-[4vw]">
           <Link href="/partner-with-devcatalyst" className="flex min-h-12 items-center gap-2.5 rounded-full bg-catalyst-forest px-7 py-3.5 text-base font-medium text-white transition-colors hover:bg-[#333] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-4">Partner with us <Arrow /></Link>
-          <a href="https://socials.devcatalyst.in/" target="_blank" rel="noreferrer noopener" className="flex min-h-12 items-center gap-2.5 rounded-full border border-[#0f0f0f] px-7 py-3.5 text-base font-medium transition-colors hover:bg-[#f1f1f1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-4">Join DevCatalyst</a>
+          <a href="https://socials.devcatalyst.in/" target="_blank" rel="noreferrer noopener" className="flex min-h-12 items-center gap-2.5 rounded-full border border-[#0f0f0f] px-7 py-3.5 text-base font-medium transition-colors hover:bg-[#f1f1f1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-4">Our socials</a>
         </div>
 
         <div ref={marqueeRef} className="dc-footer-marquee mt-[clamp(70px,10vh,110px)] overflow-hidden border-y border-black py-[clamp(10px,1.6vw,20px)]">
@@ -152,7 +159,7 @@ export default function DoodleCrewFooter() {
       <div className="dc-footer-bottom flex flex-wrap items-center justify-between gap-[18px] border-t border-[#e6e6e6] px-[4vw] py-6 font-mono text-[11px] uppercase tracking-[0.25em] text-[#555]">
         <span>© {new Date().getFullYear()} DevCatalyst</span>
         <nav aria-label="Footer navigation" className="flex flex-wrap gap-x-[26px] gap-y-2">{links.map((link) => link.external ? <a key={link.label} href={link.href} target="_blank" rel="noreferrer" className="transition-colors hover:text-black hover:underline">{link.label}</a> : <Link key={link.label} href={link.href} className="transition-colors hover:text-black hover:underline">{link.label}</Link>)}</nav>
-        <span>Made on campus</span>
+        <nav aria-label="Social links" className="flex flex-wrap gap-x-[26px] gap-y-2">{socials.map((social) => <a key={social.label} href={social.href} target="_blank" rel="noreferrer noopener" className="transition-colors hover:text-black hover:underline">{social.label}</a>)}</nav>
       </div>
       <svg width="0" height="0" className="absolute" aria-hidden="true"><defs><filter id="dc-footer-rough"><feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="2" seed="4" result="n" /><feDisplacementMap in="SourceGraphic" in2="n" scale="2.5" /></filter></defs></svg>
     </footer>

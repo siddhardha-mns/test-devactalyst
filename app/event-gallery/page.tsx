@@ -7,7 +7,7 @@ import { EVENTS } from "@/components/ui/event-folder-data";
 
 export const metadata: Metadata = {
   title: "Event Gallery | DevCatalyst",
-  description: "Explore photos from DevCatalyst meetups, workshops, hackathons, and Catalyst Days.",
+  description: "Explore photos from DevCatalyst meetups, workshops, hackathons, and Catalyst Days 2026.",
 };
 
 const photoCount = EVENTS.reduce((total, event) => total + event.photos.length, 0);

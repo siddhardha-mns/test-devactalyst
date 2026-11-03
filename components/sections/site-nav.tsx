@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { label: "About us", href: "/#about" },
   { label: "Events & Gallery", href: "/event-gallery" },
   { label: "Testimonials", href: "/#testimonials" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export default function SiteNav() {

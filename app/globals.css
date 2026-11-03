@@ -40,6 +40,13 @@
 @media (max-height: 740px) and (max-width: 1023px) { .hero-crowd-frame { bottom: -36px; } }
 @media (prefers-reduced-motion: reduce) { .animate-fade-in-up, .animate-scroll-horizontal, .animate-scroll-horizontal-reverse { animation: none; } }
 
+@keyframes dc-loader-spin { to { transform: rotate(360deg); } }
+.dc-loader { position: relative; display: grid; width: 92px; height: 92px; place-items: center; border-radius: 999px; }
+.dc-loader::before, .dc-loader::after { content: ""; position: absolute; border-radius: inherit; border: 2px solid transparent; }
+.dc-loader::before { inset: 0; border-top-color: var(--dc-forest); border-right-color: var(--dc-forest); animation: dc-loader-spin 1s linear infinite; }
+.dc-loader::after { inset: 11px; border-bottom-color: var(--dc-line); border-left-color: var(--dc-line); animation: dc-loader-spin 1.6s linear infinite reverse; }
+@media (prefers-reduced-motion: reduce) { .dc-loader::before, .dc-loader::after { animation: none; } }
+
 /* DevCatalyst FAQ reference styling */
 .dc-faq-section { --bg-color: var(--dc-paper); --ink-color: #111; --muted-ink: var(--dc-muted); --card-bg: var(--dc-white); --border-color: var(--dc-line); --font-sans: var(--dc-font-sans); --font-hand: var(--dc-font-sans); }
 /* Main FAQ Two-Column Layout */

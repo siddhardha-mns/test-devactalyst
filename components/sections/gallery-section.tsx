@@ -14,7 +14,7 @@ export default function GallerySection() {
             Events are where connection begins.
           </h2>
           <p className="text-sm leading-6 text-catalyst-muted">
-            Open a folder to explore moments from our meetups, workshops, hackathons, and Catalyst Days.
+            Open a folder to explore moments from our meetups, workshops, hackathons, and Catalyst Days 2026.
           </p>
         </div>
         <div className="mt-14"><EventFolderGallery items={CATEGORY_FOLDERS} categories /></div>
